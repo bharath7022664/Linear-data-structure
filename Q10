@@ -1,0 +1,20 @@
+function findSmallestNumber(stack) {
+  if (stack.length === 0) {
+    return null;
+  }
+  
+  let smallest = stack.pop();
+  if (stack.length > 0) {
+    const nextSmallest = findSmallestNumber(stack);
+    if (nextSmallest !== null && nextSmallest < smallest) {
+      smallest = nextSmallest;
+    }
+  }
+  
+  return smallest;
+}
+
+const stack = [5, 3, 9, 1, 7];
+console.log(`Stack: ${stack}`);
+const smallest = findSmallestNumber(stack);
+console.log(`Smallest number: ${smallest}`);
