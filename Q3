@@ -1,0 +1,14 @@
+function isRotation(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  const concatenated = str1 + str1;
+  return concatenated.includes(str2);
+}
+
+
+const str1 = "hello";
+const str2 = "llohe";
+console.log(isRotation(str1, str2)); 
+
+Output: true
