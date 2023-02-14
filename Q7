@@ -1,0 +1,23 @@
+function prefixToInfix(prefix) {
+  const stack = [];
+  const operators = ['+', '-', '*', '/', '%', '^'];
+  
+  for (let i = prefix.length - 1; i >= 0; i--) {
+    const char = prefix[i];
+    if (operators.includes(char)) {
+      const operand1 = stack.pop();
+      const operand2 = stack.pop();
+      const expr = `(${operand1} ${char} ${operand2})`;
+      stack.push(expr);
+    } else {
+      stack.push(char);
+    }
+  }
+  
+  return stack.pop();
+}
+
+const prefixExpr = '*+23 5';
+const infixExpr = prefixToInfix(prefixExpr);
+console.log(`Prefix expression: ${prefixExpr}`);
+console.log(`Infix expression: ${infixExpr}`);
