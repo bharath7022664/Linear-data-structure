@@ -1,0 +1,23 @@
+function postfixToPrefix(postfix) {
+  const stack = [];
+  const operators = ['+', '-', '*', '/', '%', '^'];
+  
+  for (let i = 0; i < postfix.length; i++) {
+    const char = postfix[i];
+    if (operators.includes(char)) {
+      const operand2 = stack.pop();
+      const operand1 = stack.pop();
+      const expr = char + operand1 + operand2;
+      stack.push(expr);
+    } else {
+      stack.push(char);
+    }
+  }
+  
+  return stack.pop();
+}
+
+const postfixExpr = '23+5*';
+const prefixExpr = postfixToPrefix(postfixExpr);
+console.log(`Postfix expression: ${postfixExpr}`);
+console.log(`Prefix expression: ${prefixExpr}`);
